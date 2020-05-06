@@ -38,10 +38,10 @@ brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
 ## 开发注意点
 
 1. 不使用Laravel页面模板或Laravel UI，只写供前端调用的接口；
-2. 不使用Session，统一使用JWT；
+2. 除了默认后台的页面，接口不使用Session，统一使用JWT；
 3. 本地开发使用file缓存，测试环境或者线上使用redis缓存；
 4. 日志使用`Log` `Facades`保存在log文件中，暂未接入阿里云日志服务；
-5. 前端使用基于`vue-element-admin`[COTA-ADMIN-VUE](https://git.lmh5.com/COTA/cota.admin-vue)
+5. 前端使用基于`vue-element-admin`
 6. 所有 Model 继承 BaseModel；
 7. 后台接口继承`Api\Admin\Controller`；
 8. 前端接口继承`Api\Controller`;
@@ -178,7 +178,7 @@ brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
 运行命令`php artisan key:generate`和`php artisan jwt:secret`生成新的密匙；
 6. 如果使用的是MySQL 5.6，需要修改文件`AppServiceProvider`的`27`行，否则数据库索引报错；
 7. 运行`php artisan migrate`，建立数据表结构。如果需要测试数据，就运行`php artisan migrate --seed`；
-8. 运行`php artisan data:init`，导入初始化数据；
+8. 运行`php artisan cota:data-init`，导入初始化数据；
 9. 运行`php artisan serve`，打开本地网站；
 
 
@@ -190,12 +190,32 @@ brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
 server {
     listen 80;
     server_name www.domain.com #域名
-    root /.../php/public; #根目录
 
+    # SSL设置
+    # listen  443 ssl;
+    # ssl_certificate   /.../fullchain.pem;
+    # ssl_certificate_key  /.../privkey.pem;
+    # ssl_session_timeout 5m;
+    # ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    # ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;
+    # ssl_prefer_server_ciphers on;
+    
+    # error_page 497 https://$host&uri?$args;
+
+    root /.../php/public; #根目录
 
     index index.html index.htm index.php;
 
     charset utf-8;
+
+    # 跨域
+    add_header 'Access-Control-Allow-Origin' '*';
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'DELETE, OPTION, POST, GET';
+    add_header 'Access-Control-Allow-Headers' 'X-Requested-With, Content-Type, Authorization';
+
+    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+    add_header X-Content-Type-Options nosniff;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;
@@ -248,5 +268,7 @@ tymon/jwt-auth | JWT验证 | 接口授权
 guzzlehttp/guzzle | HTTP 请求套件 | 请求通莞金服接口
 
 ## 自定义 Artisan 命令列表
+
+- 导入初始化数据`php artisan cota:data-init`
 
 ## 队列列表
