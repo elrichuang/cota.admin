@@ -1,3 +1,9 @@
+![Packagist Version](https://img.shields.io/packagist/v/cootaa/admin)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/cootaa/admin)
+![Packagist License](https://img.shields.io/packagist/l/cootaa/admin)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/elrichuang/cootaa.admin)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/elrichuang/cootaa.admin)
+
 ## 项目概述
 
 COTA-ADMIN 基于Laravel 6开发，用于一般商城、网站开发用的后台及前端接口框架。
