@@ -2,6 +2,12 @@
 
 COTA-ADMIN 基于Laravel 6开发，用于一般商城、网站开发用的后台及前端接口框架。
 
+## 通过composer建立新的项目
+
+```bash
+composer create-project --prefer-dist cootaa/admin myproject
+```
+
 ## 更新说明
 
 ### 版本4.0.1.20200505
