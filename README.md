@@ -28,13 +28,9 @@ https://learnku.com/docs/laravel-specification
 
 ## 资源
 
-### 付费教程
+### 教程
 
 https://learnku.com
-
-账号：13640800070
-密码：cota1310
-
 
 ### 国内 composer 镜像：
 
@@ -45,7 +41,6 @@ https://learnku.com
 清华：https://mirrors.tuna.tsinghua.edu.cn/
 
 brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
-
 
 ## 开发注意点
 
