@@ -74,7 +74,7 @@
                     }else
                     {
                         bootbox.alert("退出登录成功！",function() {
-                            $.removeCookie('my_cota_admin_token');
+                            $.removeCookie("{{ config('admin.api_cookie_name') }}");
                             window.location.href = "{{ route('admin.users.login') }}";
                         });
                     }

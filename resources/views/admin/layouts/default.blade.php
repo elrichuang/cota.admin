@@ -117,10 +117,10 @@
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                'Authorization':'Bearer '+$.cookie('my_cota_admin_token')
+                'Authorization':'Bearer '+$.cookie("{{ config('admin.api_cookie_name') }}")
             },
             beforeSend: function() {
-                if ($.cookie('my_cota_admin_token') === undefined) {
+                if ($.cookie("{{ config('admin.api_cookie_name') }}") === undefined) {
                     bootbox.alert('请先登录',function(){
                         window.location.href = "{{ route('admin.users.login') }}";
                     });

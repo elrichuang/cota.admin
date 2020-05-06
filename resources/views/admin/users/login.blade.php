@@ -131,7 +131,7 @@
                     var token = result.data.token;
                     var date = new Date();
                     date.setTime(date.getTime() + (result.data.expires_in * 1000));
-                    $.cookie('my_cota_admin_token', token, {expires: date, path:'/'});
+                    $.cookie("{{ config('admin.api_cookie_name') }}", token, {expires: date, path:'/'});
                     window.location.href = "/admin";
                 }
             }, 'json');
