@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>COTA ADMIN - 登录</title>
+    <title>{{ config('app.name') }} - 登录</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -31,16 +31,12 @@
             background: transparent;
         }
 
-        .product-name {
-            text-decoration: overline underline;
-        }
-
     </style>
 </head>
 <body class="hold-transition login-page text-sm">
 <div class="login-box">
     <div class="login-logo">
-        <b>COTA</b> <span class="product-name">admin</span>
+        <b>{{ config('app.name') }}</b>
     </div>
     <!-- /.login-logo -->
     <div class="card">

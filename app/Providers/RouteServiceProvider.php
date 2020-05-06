@@ -42,7 +42,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapAdminWebRoutes();
+        // 如果开启设置就加载后台页面路由
+        if (config('app.use_admin_lte')) {
+            $this->mapAdminWebRoutes();
+        }
 
         $this->mapAdminApiRoutes();
 
@@ -67,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminWebRoutes()
     {
-        Route::prefix('admin')
+        Route::prefix(config('admin.context_path'))
             ->middleware(['web','admin.checkAdminApiTokenExist','admin.userLogs'])
             ->namespace($this->namespace.'\Web\Admin')
             ->name('admin.')

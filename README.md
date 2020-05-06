@@ -16,6 +16,16 @@ composer create-project --prefer-dist cootaa/admin myproject
 
 ## 更新说明
 
+### 版本4.0.9.20200505
+
+1. 命令增加命名空间； 增加管理后台控制器基类； 增加页面权限检测，接口暂时不检测； 增加百度编辑器组件；
+2. 修改composer.json设置，强制更新jwt:secret；
+3. 统一后台cookie名称使用.env的设置；
+4. 增加徽标和创建项目命令；
+5. 可设置内置后台的上下文路径；
+6. 只有设置了使用内置后台时才加载后台页面路由；
+
+
 ### 版本4.0.1.20200505
 
 1. 增加默认管理后台，前端使用`adminlte 3`开发；
@@ -71,6 +81,8 @@ brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
 25. 所有字段都必须要有注释！！！
 26. 数据库统一使用`utf8mb4`和`utf8mb4-unicode-ci`;
 27. 如果在本地开发时在`.env`文件里新增加了设置，需要同步到`.env.example`文件;
+28. 默认后台的模板页面或者组件中的 js 和 css 都直接写在对应的页面或组件上，如果是共用的，就写在 default.blade.php 上，并且在命名时加上页面或组件名作为命名空间。
+这样做让各自的 css 和 js 都更易于维护，同时也可以通过 `route()`方法统一输出路径。绝对不能在页面上 hard code 写上各种路径。
 
 
 ## 功能如下
@@ -78,8 +90,8 @@ brew 镜像设置：https://mirror.tuna.tsinghua.edu.cn/help/homebrew/
 ### 默认管理后台
 
 - 前端使用`adminlte 3`；
-- 模板位于目录`resources`-`views`；
-- 前端静态文件`js`，`css`等位于目录`public`-`static`；
+- 模板位于目录`resources`/`views`；
+- 前端静态文件`js`，`css`等位于目录`public`/`static`；
 - 后台菜单权限功能已实现，支持多角色；
 - 有`单图片上传组件`和`百度编辑器`，图片上传均直传到OSS，编辑器支持批量上传`图片`，`涂鸦`，`视频`，`附件`；
 - 网页端登录状态使用 `session`，接口使用`jwt`，登录后会在浏览器记录`jwt`的 `cookie`，过期时间与`session`一样，默认 120 分钟，当`cookie`过期的同时`session`会强行过期；
