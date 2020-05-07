@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="image">缩略图</label>
-                        @component('admin.components.single-image-upload-oss',['imageField'=>'image','image'=>isset($item)?$item->image:null])
+                        @component('admin.components.single-image-upload-oss',['fieldName'=>'image','image'=>isset($item)?$item->image:null])
                         @endcomponent
                         <small class="text-muted">
                             文件大小200KB 以内

@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="avatar">头像</label>
-                        @component('admin.components.single-image-upload-oss',['imageField'=>'avatar','image'=>isset($item)?$item->avatar:null])
+                        @component('admin.components.single-image-upload-oss',['fieldName'=>'avatar','image'=>isset($item)?$item->avatar:null])
                         @endcomponent
                         <small class="text-muted">
                             宽高比 1:1，文件大小200KB 以内

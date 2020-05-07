@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="thumb">缩略图</label>
-                        @component('admin.components.single-image-upload-oss',['imageField'=>'thumb','image'=>isset($item)?$item->thumb:null])
+                        @component('admin.components.single-image-upload-oss',['fieldName'=>'thumb','image'=>isset($item)?$item->thumb:null])
                         @endcomponent
                         <small class="text-muted">
                             文件大小200KB 以内
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="content">内容</label>
-                        @component('admin.components.editor',['contentField' => 'content'])
+                        @component('admin.components.editor',['fieldName' => 'content'])
                         @endcomponent
                     </div>
                 </div>

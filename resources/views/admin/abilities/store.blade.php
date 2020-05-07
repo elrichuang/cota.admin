@@ -246,7 +246,7 @@
                     maxlength: 50
                 },
                 url: {
-                    required: true,
+                    url: true,
                 },
                 num_sort: {
                     required: true,

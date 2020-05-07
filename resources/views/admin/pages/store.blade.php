@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group row">
                         <label for="content">内容</label>
-                        @component('admin.components.editor',['contentField' => 'content'])
+                        @component('admin.components.editor',['fieldName' => 'content'])
                         @endcomponent
                     </div>
                 </div>

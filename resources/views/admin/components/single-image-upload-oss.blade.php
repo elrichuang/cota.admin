@@ -1,19 +1,19 @@
 {{--
-imageField ：图片字段名
+fieldName ：图片字段名
 image ：现有图片路径，为null即为未有图片
 --}}
 <div class="input-group">
     <div class="custom-file">
-        <input type="file" class="custom-file-input" id="singleImage{{ $imageField }}">
-        <label class="custom-file-label" for="singleImage{{ $imageField }}">点击选择图片</label>
+        <input type="file" class="custom-file-input" id="singleImage{{ $fieldName }}">
+        <label class="custom-file-label" for="singleImage{{ $fieldName }}">点击选择图片</label>
     </div>
     <div class="input-group-append">
-        <input type="hidden" id="image{{ $imageField }}" @isset($image)value="{{ $image }}"@endisset name="{{ $imageField }}">
-        <button class="btn btn-danger" id="btnImageTrash{{ $imageField }}"><i class="fas fa-trash"></i> 清除图片</button>
-        <button class="btn btn-primary" id="btnUpload{{ $imageField }}"><i class="fas fa-upload"></i> 点击上传</button>
+        <input type="hidden" id="image{{ $fieldName }}" @isset($image)value="{{ $image }}"@endisset name="{{ $fieldName }}">
+        <button class="btn btn-danger" id="btnImageTrash{{ $fieldName }}"><i class="fas fa-trash"></i> 清除图片</button>
+        <button class="btn btn-primary" id="btnUpload{{ $fieldName }}"><i class="fas fa-upload"></i> 点击上传</button>
     </div>
 </div>
-<div id="previewImage{{ $imageField }}" class="input-group">
+<div id="previewImage{{ $fieldName }}" class="input-group">
     @isset($image)
     <img src="{{ $image }}" class="img-thumbnail img-md">
     @else
@@ -22,7 +22,7 @@ image ：现有图片路径，为null即为未有图片
 </div>
 <script>
     // 清除图片
-    $('#btnImageTrash{{ $imageField }}').on('click', function(e) {
+    $('#btnImageTrash{{ $fieldName }}').on('click', function(e) {
         e.preventDefault();
         bootbox.confirm("真的要清除图片吗？", function(result) {
             if(result)
@@ -32,19 +32,19 @@ image ：现有图片路径，为null即为未有图片
                 img.src = imgUrl;
                 img.className = "img-thumbnail img-md";
                 img.onload = function () {
-                    $("#previewImage{{ $imageField }}").empty().append(img);
+                    $("#previewImage{{ $fieldName }}").empty().append(img);
                 };
 
-                $('#image{{ $imageField }}').val(imgUrl);
+                $('#image{{ $fieldName }}').val(imgUrl);
             }
         });
     });
 
     // 图片压缩上传
-    $('#btnUpload{{ $imageField }}').on('click', function(e) {
+    $('#btnUpload{{ $fieldName }}').on('click', function(e) {
         e.preventDefault();
 
-        var file = $('#singleImage{{ $imageField }}').get(0).files[0]; //获取图片资源
+        var file = $('#singleImage{{ $fieldName }}').get(0).files[0]; //获取图片资源
         var filename = file.name;
 
         var pos = filename.lastIndexOf(".");
@@ -101,10 +101,10 @@ image ：现有图片路径，为null即为未有图片
                             img.src = rst.base64;
                             img.className = "img-thumbnail img-md";
                             img.onload = function () {
-                                $("#previewImage{{ $imageField }}").empty().append(img);
+                                $("#previewImage{{ $fieldName }}").empty().append(img);
                             };
 
-                            $('#image{{ $imageField }}').val(imageUrl);
+                            $('#image{{ $fieldName }}').val(imageUrl);
 
                             loadingDialog.modal('hide');
                         });

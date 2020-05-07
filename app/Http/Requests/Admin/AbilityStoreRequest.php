@@ -18,7 +18,7 @@ class AbilityStoreRequest extends BaseRequest
             'name' => 'required|string',
             'alias' => 'nullable|string|unique:abilities',
             'remark' => 'string',
-            'url' => 'string',
+            'url' => 'required_if:use_url,true|nullable|string',
             'status' => 'required',
             'type' => 'string',
             'icon' => 'required_if:type,view|nullable|string',
