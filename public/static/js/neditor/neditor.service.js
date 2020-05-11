@@ -36,7 +36,7 @@ function ossService(editor, data) {
                 outputData.url = result.data.imgHost + '/' + result.data.dir + ossFilename;
 
                 // 添加签名信息
-                outputData.OSSAccessKeyId = result.data.accessId;
+                outputData.OSSAccessKeyId = result.data.accessid;
                 outputData.policy = result.data.policy;
                 outputData.Signature = result.data.signature;
                 outputData.key = result.data.dir + ossFilename;

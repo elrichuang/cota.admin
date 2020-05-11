@@ -81,7 +81,7 @@ image ：现有图片路径，为null即为未有图片
                         var ossFilename = timestamp + suffix;
                         var imageUrl = result.data.imgHost + '/'+ result.data.dir + ossFilename;
                         // 添加签名信息
-                        ossData.append('OSSAccessKeyId', result.data.accessId);
+                        ossData.append('OSSAccessKeyId', result.data.accessid);
                         ossData.append('policy', result.data.policy);
                         ossData.append('Signature', result.data.signature);
                         ossData.append('key', result.data.dir + ossFilename);
