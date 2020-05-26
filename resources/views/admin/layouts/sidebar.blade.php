@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.dashboard') }}" class="brand-link">
+    <a href="{{ route('admin.dashboard') }}" class="brand-link text-sm">
         <img src="{{ config('app.default_avatar') }}" alt="{{ config('app.name') }}" class="brand-image img-circle elevation-1"
              style="opacity: .8">
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>

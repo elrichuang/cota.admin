@@ -94,15 +94,8 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="published_at">发布时间</label>
-                        <div class="input-group date" id="published_at" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" value="@isset($item){{ $item->published_at }}@endisset" name="published_at" data-target="#published_at"/>
-                            <div class="input-group-append" data-target="#published_at" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
-                        </div>
-                    </div>
+                    @component('admin.components.form.datetimepicker',['label'=>'发布时间','fieldName' => 'published_at'])
+                    @endcomponent
                     <div class="form-group row">
                         <label for="summary">摘要</label>
                         <textarea class="form-control" rows="5" name="summary" id="summary" placeholder="请输入摘要">@isset($item){{ $item->summary }}@endisset</textarea>

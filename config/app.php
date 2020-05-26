@@ -259,5 +259,19 @@ return [
     /**
      * 是否使用内置 admin-lte 后台，为 true 时，后台接口会做 csrf 检查
      */
-    'use_admin_lte'=>env('USE_ADMIN_LTE', true)
+    'use_admin_lte'=>env('USE_ADMIN_LTE', true),
+    /**
+     * 身份证认证配置
+     */
+    'id_card_valid' => [
+        'appCode' => env('ID_CARD_VALID_ALIYUN_APPCODE',''),
+        'apiUrl' => env('ID_CARD_VALID_ALIYUN_API_URL','')
+    ],
+    /**
+     * 身份证OCR认证配置
+     */
+    'id_card_ocr_valid' => [
+        'appCode' => env('ID_CARD_OCR_VALID_ALIYUN_APPCODE',''),
+        'apiUrl' => env('ID_CARD_OCR_VALID_ALIYUN_API_URL','')
+    ],
 ];

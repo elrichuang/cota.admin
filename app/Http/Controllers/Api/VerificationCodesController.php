@@ -49,8 +49,7 @@ class VerificationCodesController extends Controller
                 $easySms->send($phone, [
                     'template' => config('easysms.gateways.aliyun.templates.register'),
                     'data' => [
-                        'code' => $code,
-                        'product' => '猩云平台'
+                        'code' => $code
                     ],
                 ]);
             } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
