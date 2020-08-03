@@ -1,5 +1,5 @@
 {{--
-contentField ：编辑器字段名
+fieldName ：编辑器字段名
 article ：文章
 toolbar ：工具栏 ['fullscreen', 'source', 'undo', 'redo', 'bold']
 
@@ -10,13 +10,13 @@ form.submit(function() {
     ...验证规则等
 });
 --}}
-<script type="text/plain" id="{{ $contentField }}" name="{{ $contentField }}">
-    @isset($article){!! $article->$contentField !!}@endisset
+<script type="text/plain" id="{{ $fieldName }}" name="{{ $fieldName }}">
+    @isset($article){!! $article->$fieldName !!}@endisset
 </script>
 
 <script>
     $(function () {
-        UE.getEditor('{{ $contentField }}', {
+        UE.getEditor('{{ $fieldName }}', {
             @isset($toolbar)
             toolbars: @json($toolbar, JSON_PRETTY_PRINT),
             @endisset
