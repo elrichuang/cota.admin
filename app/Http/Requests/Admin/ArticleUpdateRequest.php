@@ -21,9 +21,9 @@ class ArticleUpdateRequest extends BaseRequest
             'summary' => 'nullable|string',
             'content' => 'required|string',
             'thumb' => 'nullable|string',
-            'num_like' => 'integer',
-            'num_view' => 'integer',
-            'num_sort' => 'integer',
+            'num_like' => 'nullable|integer',
+            'num_view' => 'nullable|integer',
+            'num_sort' => 'nullable|integer',
             'published_at' => 'required|string'
         ];
     }

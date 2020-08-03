@@ -81,9 +81,9 @@ class ArticlesController extends Controller
                 'summary' => $request->summary,
                 'content' => $request->get('content'),
                 'thumb' => $request->thumb,
-                'num_like' => $request->num_like,
-                'num_view' => $request->num_view,
-                'num_sort' => $request->num_sort,
+                'num_like' => intval($request->num_like),
+                'num_view' => intval($request->num_view),
+                'num_sort' => intval($request->num_sort),
                 'on_top_at' => $on_top_at,
                 'recommend_at' => $recommend_at,
                 'published_at' =>$request->published_at,
@@ -136,9 +136,9 @@ class ArticlesController extends Controller
             $article->summary = $request->summary;
             $article->content = $request->get('content');
             $article->thumb = $request->get('thumb');
-            $article->num_sort = $request->num_sort;
-            $article->num_like = $request->num_like;
-            $article->num_view = $request->num_view;
+            $article->num_sort = intval($request->num_sort);
+            $article->num_like = intval($request->num_like);
+            $article->num_view = intval($request->num_view);
             $article->on_top_at = $on_top_at;
             $article->recommend_at = $recommend_at;
             $article->published_at = $request->published_at;
