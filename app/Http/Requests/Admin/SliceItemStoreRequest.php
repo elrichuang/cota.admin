@@ -16,7 +16,7 @@ class SliceItemStoreRequest extends BaseRequest
         return [
             'slice_id'=>'required|integer',
             'image'=>'required|url',
-            'url'=>'url',
+            'url'=>'nullable|url',
             'num_sort'=>'required|integer'
         ];
     }

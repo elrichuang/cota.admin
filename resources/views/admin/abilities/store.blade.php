@@ -110,9 +110,6 @@
                     <div class="form-group row">
                         <label for="url">链接</label>
                         <input type="text" class="form-control" name="url" id="url" @isset($item)value="{{ $item->url }}"@endisset placeholder="http://或https://">
-                        <small class="form-text text-muted">
-                            http://或https://开头的链接
-                        </small>
                     </div>
                     <div class="form-group row">
                         <label for="remark">备注</label>
@@ -245,9 +242,6 @@
                 remark: {
                     maxlength: 50
                 },
-                url: {
-                    url: true,
-                },
                 num_sort: {
                     required: true,
                     digits: true,
@@ -267,9 +261,6 @@
                 },
                 remark: {
                     maxlength: "长度不大于50个字",
-                },
-                url: {
-                    url: "链接格式不正确",
                 },
                 num_sort: {
                     required: "请输入排序",

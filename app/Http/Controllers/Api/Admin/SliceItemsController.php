@@ -60,7 +60,7 @@ class SliceItemsController extends Controller
             $entity = SliceItem::create([
                 'slice_id' => $request->slice_id,
                 'image'=>$request->image,
-                'url'=>$request->url,
+                'url'=>strval($request->url),
                 'num_sort'=>$request->num_sort
             ]);
 
@@ -95,7 +95,7 @@ class SliceItemsController extends Controller
         try {
             $sliceItem->slice_id = $request->slice_id;
             $sliceItem->image = $request->image;
-            $sliceItem->url = $request->url;
+            $sliceItem->url = strval($request->url);
             $sliceItem->num_sort = $request->num_sort;
             $sliceItem->save();
 

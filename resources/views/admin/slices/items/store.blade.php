@@ -136,10 +136,6 @@
         });
         form.validate({
             rules: {
-                url: {
-                    required: true,
-                    url: true
-                },
                 slice_id: {
                     required: true
                 },
@@ -148,10 +144,6 @@
                 }
             },
             messages: {
-                url: {
-                    required: "请输入链接",
-                    url:'输入的链接格式不对'
-                },
                 slice_id:"请选择一个幻灯片",
                 image: "请上传一张图片"
             },

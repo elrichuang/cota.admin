@@ -94,8 +94,13 @@
                             </label>
                         </div>
                     </div>
-                    @component('admin.components.form.datetimepicker',['label'=>'发布时间','fieldName' => 'published_at'])
-                    @endcomponent
+                    @isset($item)
+                        @component('admin.components.form.datetimepicker',['label'=>'发布时间','fieldName' => 'published_at','item'=>$item])
+                        @endcomponent
+                    @else
+                        @component('admin.components.form.datetimepicker',['label'=>'发布时间','fieldName' => 'published_at'])
+                        @endcomponent
+                    @endisset
                     <div class="form-group row">
                         <label for="summary">摘要</label>
                         <textarea class="form-control" rows="5" name="summary" id="summary" placeholder="请输入摘要">@isset($item){{ $item->summary }}@endisset</textarea>

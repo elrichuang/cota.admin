@@ -58,6 +58,10 @@ function checkMenuActive($ability) {
     }else {
         if ($ability->url == url()->current()) {
             return 'active';
+        }else {
+            if ($ability->url == request()->getRequestUri()) {
+                return 'active';
+            }
         }
     }
 
