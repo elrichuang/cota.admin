@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class AdminUserLogs
 {
@@ -47,14 +48,18 @@ class AdminUserLogs
                 if ($request->expectsJson()) {
                     $userLog->response_data = $response->getContent();
                 }else {
-                    if ($response->getOriginalContent() instanceof View) {
-                        $userLog->response_data = $response->getOriginalContent()->getName();
-                    }else {
-                        if($response->exception) {
-                            $userLog->response_data = $response->exception->getMessage();
+                    if (!$response instanceof BinaryFileResponse) {
+                        if ($response->getOriginalContent() instanceof View) {
+                            $userLog->response_data = $response->getOriginalContent()->getName();
                         }else {
-                            $userLog->response_data = $response->getContent();
+                            if($response->exception) {
+                                $userLog->response_data = $response->exception->getMessage();
+                            }else {
+                                $userLog->response_data = $response->getContent();
+                            }
                         }
+                    }else {
+                        $userLog->response_data = '导出文件数据';
                     }
                 }
                 $userLog->ip_address = $request->ip();
