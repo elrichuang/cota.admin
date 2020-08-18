@@ -40,6 +40,10 @@ Route::get('wechat/officials/jssdk','Wechat\OfficialsController@jssdk')->name('w
 
 // 微信小程序
 Route::get('wechat/miniapps/oauth','Wechat\MiniappsController@oauth')->name('wechat.miniapps.oauth');
+Route::get('wechat/miniapps/del_session','Wechat\MiniappsController@delSession')->name('wechat.miniapps.delSession');
+Route::post('wechat/miniapps/save_userinfo','Wechat\MiniappsController@saveUserInfo')->name('wechat.miniapps.saveUserInfo');
+Route::get('wechat/miniapps/get_userinfo','Wechat\MiniappsController@getUserInfo')->name('wechat.miniapps.getUserInfo');
+
 // 微信支付回调
 Route::get('wechat/payments/notify','Wechat\PaymentsController@notify')->name('wechat.payments.notify');
 
