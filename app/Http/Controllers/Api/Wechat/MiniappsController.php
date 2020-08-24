@@ -165,7 +165,7 @@ class MiniappsController extends Controller
                         $disk->put($avatar, $response->getBody());
                         // 获取URL
                         $avatar = $disk->getUrl($avatar);
-                        $member->avata = $avatar;
+                        $member->avatar = $avatar;
                     }
                 }
 
