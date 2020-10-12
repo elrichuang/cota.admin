@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="/static/adminlte-3.0.4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="/static/adminlte-3.0.4/plugins/daterangepicker/daterangepicker.css">
+    <!-- zTree -->
+    <link rel="stylesheet" href="/static/css/zTreeStyle/zTreeStyle.css">
     @yield('style')
     <!-- jQuery -->
     <script src="/static/adminlte-3.0.4/plugins/jquery/jquery.min.js"></script>
@@ -68,6 +70,8 @@
     <script src="/static/js/neditor/editor_api.js"></script>
     <script src="/static/js/neditor/neditor.service.js"></script>
     <script src="/static/js/neditor/i18n/zh-cn/zh-cn.js"></script>
+    <!-- Neditor End -->
+    <script src="/static/js/jquery.ztree.all.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="height: auto">
 <div class="wrapper">

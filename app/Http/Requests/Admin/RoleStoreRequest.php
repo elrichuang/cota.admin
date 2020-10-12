@@ -15,8 +15,7 @@ class RoleStoreRequest extends BaseRequest
     {
         return [
             'name' => 'required|string|unique:roles',
-            'view_abilities_ids' => 'required|array',
-            'api_abilities_ids' => 'array'
+            'view_abilities_ids' => 'required',
         ];
     }
 }

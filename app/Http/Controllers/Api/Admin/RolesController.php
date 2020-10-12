@@ -65,7 +65,12 @@ class RolesController extends Controller
                 'name' => $request->name,
             ]);
 
-            $abilitiesIds = array_merge($request->view_abilities_ids,$request->api_abilities_ids);
+            $viewIds = [];
+            if ($request->view_abilities_ids) {
+                $viewIds = json_decode($request->view_abilities_ids);
+            }
+
+            $abilitiesIds = $viewIds;
             $entity->setAbilities($abilitiesIds);
 
             $entity->save();
@@ -99,7 +104,12 @@ class RolesController extends Controller
         try {
             $role->name = $request->name;
 
-            $abilitiesIds = array_merge($request->view_abilities_ids,$request->api_abilities_ids);
+            $viewIds = [];
+            if ($request->view_abilities_ids) {
+                $viewIds = json_decode($request->view_abilities_ids);
+            }
+
+            $abilitiesIds = $viewIds;
             $role->setAbilities($abilitiesIds);
 
             $role->save();

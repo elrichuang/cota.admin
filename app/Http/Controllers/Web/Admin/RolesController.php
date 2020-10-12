@@ -58,9 +58,45 @@ class RolesController extends Controller
      */
     public function profile(Role $role) {
         $allAbilities = Ability::getTreeData();
+        $treeData = [];
+        foreach ($allAbilities['view'] as $allAbility) {
+            $open = false;
+            if (count($allAbility->children)) {
+                $open = true;
+            }
+
+            $checked = false;
+            if(in_array($allAbility->id,$role->abilities()->allRelatedIds()->toArray())) {
+                $checked = true;
+            }
+
+            array_push($treeData,[
+                'id' => $allAbility->id,
+                'pId' => $allAbility->parent_id,
+                'name' => $allAbility->name,
+                'open' => $open,
+                'checked' => $checked
+            ]);
+            foreach ($allAbility->children as $child) {
+                $open = false;
+                $checked = false;
+                if(in_array($child->id,$role->abilities()->allRelatedIds()->toArray())) {
+                    $checked = true;
+                }
+                array_push($treeData,[
+                    'id' => $child->id,
+                    'pId' => $child->parent_id,
+                    'name' => $child->name,
+                    'open' => $open,
+                    'checked' => $checked
+                ]);
+            }
+        }
+
         return view('admin.roles.store', [
             'item' => $role,
-            'allAbilities' => $allAbilities
+            'allAbilities' => $allAbilities,
+            'treeData' => $treeData
         ]);
     }
 }

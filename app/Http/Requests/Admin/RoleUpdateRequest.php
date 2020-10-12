@@ -17,8 +17,7 @@ class RoleUpdateRequest extends BaseRequest
         $role = $this->route('role');
         return [
             'name' => 'required|string|unique:roles,name,'.$role->id,
-            'view_abilities_ids' => 'required|array',
-            'api_abilities_ids' => 'array'
+            'view_abilities_ids' => 'required',
         ];
     }
 }

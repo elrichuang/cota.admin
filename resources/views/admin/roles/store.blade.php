@@ -32,36 +32,9 @@
                     </div>
                     <div class="form-group row">
                         <label for="view_abilities_ids">视图权限</label>
-                        <select id="view_abilities_ids" name="view_abilities_ids[]" class="form-control" multiple="multiple" size="10" style="width: 100%">
-                            @foreach($allAbilities['view'] as $abilityItem)
-                                @if(isset($item) && in_array($abilityItem->id,$item->abilities()->allRelatedIds()->toArray()))
-                                    <option value="{{ $abilityItem->id }}" selected="selected">{{ $abilityItem->name }}</option>
-                                @else
-                                    <option value="{{ $abilityItem->id }}">{{ $abilityItem->name }}</option>
-                                @endif
-                                @if(count($abilityItem->children))
-                                    @foreach ($abilityItem->children as $childAbility)
-                                        @if(isset($item) && in_array($childAbility->id,$item->abilities()->allRelatedIds()->toArray()))
-                                            <option value="{{ $childAbility->id }}" selected="selected">&lfloor;{{ $childAbility->name }}</option>
-                                        @else
-                                            <option value="{{ $childAbility->id }}">&lfloor;{{ $childAbility->name }}</option>
-                                        @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        </select>
                     </div>
                     <div class="form-group row">
-                        <label for="api_abilities_ids">接口权限</label>
-                        <select id="api_abilities_ids" name="api_abilities_ids[]" class="select2" multiple="multiple" data-placeholder="请选择一个或多个权限" style="width: 100%">
-                            @foreach($allAbilities['api'] as $abilityItem)
-                                @if(isset($item) && in_array($abilityItem->id,$item->abilities()->allRelatedIds()->toArray()))
-                                    <option value="{{ $abilityItem->id }}" selected="selected">{{ $abilityItem->name }}</option>
-                                @else
-                                    <option value="{{ $abilityItem->id }}">{{ $abilityItem->name }}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <ul id="treeMenu" class="ztree"></ul>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -77,11 +50,35 @@
 
 @section('javascript')
     <script>
+        var setting = {
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+
+        var zNodes = @json($treeData, JSON_PRETTY_PRINT);
+        $(document).ready(function(){
+            $.fn.zTree.init($("#treeMenu"), setting, zNodes);
+        });
+
         // 表单提交
         var form = $('#userForm');
 
         $.validator.setDefaults({
             submitHandler: function () {
+                var zTreeObj = $.fn.zTree.getZTreeObj("treeMenu");
+                var checkedNodes = zTreeObj.getCheckedNodes();
+                var view_abilities_ids = [];
+                for (var i = 0; i < checkedNodes.length; i++) {
+                    var node = checkedNodes[i];
+                    view_abilities_ids.push(node.id);
+                }
+
                 // 验证通过
                 $.ajax({
                     url:form.attr('action'),
@@ -90,7 +87,7 @@
                     @else
                     type:'POST',
                     @endisset
-                    data:form.serialize(),
+                    data:form.serialize()+'&view_abilities_ids='+JSON.stringify(view_abilities_ids),
                     dataType:'json',
                     error:function() {
                         bootbox.alert('发生网络错误');
